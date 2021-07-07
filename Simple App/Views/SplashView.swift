@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct SplashView: View {
     
     @State private var isActive = false
     let home = HomeView()
@@ -38,10 +38,10 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct SplashView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView()
+        SplashView()
     }
     
 }
