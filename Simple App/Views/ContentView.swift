@@ -9,21 +9,30 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var isActive = false
+    let home = HomeView()
+    
     var body: some View {
         NavigationView {
-            //NavigationLink(destination: HomeView()) {
+            VStack(alignment: .center) {
                 Text("Simple App")
-            
+                NavigationLink(
+                    destination: home,
+                    isActive: $isActive,
+                    label: {
+                        EmptyView()
+                    })
+            }
         }
         .onAppear(perform: {
-            delay()
+            goToHome()
         })
     }
     
-    func delay() {
+    func goToHome() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
             print("Go to home after 2 seconds")
-            NavigationLink(destination: HomeView()) {}
+            self.isActive = true
         })
     }
     
