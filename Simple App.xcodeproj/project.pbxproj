@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		AB512C58269457B40056954C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB512C57269457B40056954C /* Assets.xcassets */; };
 		AB512C5B269457B40056954C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB512C5A269457B40056954C /* Preview Assets.xcassets */; };
 		AB512C66269461A80056954C /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB512C65269461A80056954C /* HomeView.swift */; };
+		ABDCBC982697A431006A1CDA /* PlaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCBC972697A431006A1CDA /* PlaceData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		AB512C5A269457B40056954C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AB512C5C269457B40056954C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB512C65269461A80056954C /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		ABDCBC972697A431006A1CDA /* PlaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceData.swift; sourceTree = "<group>"; };
 		C293204D815276A4962B3851 /* Pods-Simple App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple App.debug.xcconfig"; path = "Target Support Files/Pods-Simple App/Pods-Simple App.debug.xcconfig"; sourceTree = "<group>"; };
 		E7CA76212066C3DD912AB0A3 /* Pods_Simple_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simple_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5175883140714169E03263 /* Pods-Simple App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple App.release.xcconfig"; path = "Target Support Files/Pods-Simple App/Pods-Simple App.release.xcconfig"; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 		AB512C52269457B10056954C /* Simple App */ = {
 			isa = PBXGroup;
 			children = (
+				ABDCBC962697A3A4006A1CDA /* Models */,
 				AB512C642694616D0056954C /* Views */,
 				AB512C53269457B10056954C /* Simple_AppApp.swift */,
 				AB512C57269457B40056954C /* Assets.xcassets */,
@@ -95,13 +98,20 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		ABDCBC962697A3A4006A1CDA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				ABDCBC972697A431006A1CDA /* PlaceData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E8AA436670F7C20E644A9280 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				C293204D815276A4962B3851 /* Pods-Simple App.debug.xcconfig */,
 				FE5175883140714169E03263 /* Pods-Simple App.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -219,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB512C66269461A80056954C /* HomeView.swift in Sources */,
+				ABDCBC982697A431006A1CDA /* PlaceData.swift in Sources */,
 				AB512C56269457B10056954C /* SplashView.swift in Sources */,
 				AB512C54269457B10056954C /* Simple_AppApp.swift in Sources */,
 			);
