@@ -8,8 +8,14 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @ObservedObject var networkManager = NetworkManager()
+    
     var body: some View {
-        Text("Home Preview")
+        Text("Places count # \(networkManager.places.count)")
+            .onAppear {
+                networkManager.fetchPlaces()
+            }
     }
 }
 

@@ -19,12 +19,12 @@ class NetworkManager: ObservableObject {
                     let decoder = JSONDecoder()
                     if let safeData = data {
                         do {
-                            let results = try decoder.decode(Results.self, from: safeData)
+                            let results = try decoder.decode([Place].self, from: safeData)
                             DispatchQueue.main.async {
-                                self.places = results.places
+                                self.places = results
                             }
                         } catch {
-                            print(error)
+                            print("NetworkManager # error \(error)")
                         }
                     }
                 }

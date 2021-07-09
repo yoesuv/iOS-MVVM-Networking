@@ -7,11 +7,10 @@
 
 import Foundation
 
-struct Results: Codable {
-    let places: [Place]
-}
-
 struct Place: Codable {
-    let nama, lokasi, deskripsi: String?
-    let thumbnail, gambar: String?
+    let nama: String?
+    let lokasi: String?
+    let deskripsi: String?
+    let thumbnail: String?
+    let gambar: String?
 }
