@@ -7,7 +7,10 @@
 
 import Foundation
 
-struct Place: Codable {
+struct Place: Codable, Identifiable {
+    var id: String {
+        return nama!
+    }
     let nama: String?
     let lokasi: String?
     let deskripsi: String?

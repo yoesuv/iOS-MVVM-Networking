@@ -12,10 +12,18 @@ struct HomeView: View {
     @ObservedObject var networkManager = NetworkManager()
     
     var body: some View {
-        Text("Places count # \(networkManager.places.count)")
-            .onAppear {
-                networkManager.fetchPlaces()
+        NavigationView {
+            List(networkManager.places) { place in
+                VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+                    Text(place.nama!)
+                    Text(place.lokasi!)
+                })
             }
+        }
+        .onAppear(perform: {
+            networkManager.fetchPlaces()
+        })
+            
     }
 }
 
