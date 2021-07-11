@@ -27,6 +27,7 @@ struct HomeView: View {
                     })
                 }
             }
+            .navigationTitle("List Place")
         }
         .onAppear(perform: {
             networkManager.fetchPlaces()
