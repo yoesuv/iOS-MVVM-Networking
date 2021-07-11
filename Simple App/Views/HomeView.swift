@@ -6,18 +6,26 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct HomeView: View {
     
     @ObservedObject var networkManager = NetworkManager()
+    let imageSize: CGFloat = 50
     
     var body: some View {
         NavigationView {
             List(networkManager.places) { place in
-                VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-                    Text(place.nama!)
-                    Text(place.lokasi!)
-                })
+                HStack {
+                    KFImage.url(URL(string: place.thumbnail!))
+                        .cancelOnDisappear(true)
+                        .resizable()
+                        .frame(width: imageSize, height: imageSize)
+                    VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+                        Text(place.nama!)
+                        Text(place.lokasi!)
+                    })
+                }
             }
         }
         .onAppear(perform: {
