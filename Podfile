@@ -7,5 +7,6 @@ target 'Simple App' do
 
   # Pods for Simple App
   pod 'Alamofire', '~> 5.2'
+  pod 'Kingfisher', '~> 6.3'
 
 end
