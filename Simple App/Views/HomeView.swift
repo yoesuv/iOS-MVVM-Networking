@@ -16,15 +16,17 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List(networkManager.places) { place in
-                HStack {
-                    KFImage.url(URL(string: place.thumbnail!))
-                        .cancelOnDisappear(true)
-                        .resizable()
-                        .frame(width: imageSize, height: imageSize)
-                    VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-                        Text(place.nama!)
-                        Text(place.lokasi!)
-                    })
+                NavigationLink(destination: DetailView(place: place)) {
+                    HStack {
+                        KFImage.url(URL(string: place.thumbnail!))
+                            .cancelOnDisappear(true)
+                            .resizable()
+                            .frame(width: imageSize, height: imageSize)
+                        VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+                            Text(place.nama!)
+                            Text(place.lokasi!)
+                        })
+                    }
                 }
             }
             .navigationTitle("List Place")
