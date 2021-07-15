@@ -29,8 +29,9 @@ struct HomeView: View {
                     }
                 }
             }
-            .navigationTitle("List Place")
+            .navigationBarTitle(Text("List Place"), displayMode: .inline)
         }
+        .navigationBarHidden(true)
         .onAppear(perform: {
             networkManager.fetchPlaces()
         })
