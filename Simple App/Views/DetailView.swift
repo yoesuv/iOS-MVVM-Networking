@@ -11,14 +11,24 @@ import Kingfisher
 struct DetailView: View {
     
     let place: Place?
+    let imageHeight: CGFloat = 220
     let paddingText = EdgeInsets.init(top: 0, leading: 8, bottom: 0, trailing: 8)
+    let placeHolderImage: Image = Image("PlaceHolderImage").resizable()
     
     var body: some View {
         VStack (alignment: .leading) {
             KFImage.url(URL(string: place?.gambar ?? ""))
+                .placeholder{
+                    placeHolderImage
+                        .scaledToFill()
+                        .frame(width: .infinity, height: imageHeight)
+                        .clipped()
+                }
                 .cancelOnDisappear(true)
                 .resizable()
-                .frame(width: .infinity, height: 220)
+                .scaledToFill()
+                .frame(width: .infinity, height: imageHeight)
+                .clipped()
             Text("\(place?.nama ?? "")")
                 .font(.body)
                 .fontWeight(.semibold)

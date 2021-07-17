@@ -12,6 +12,7 @@ struct HomeView: View {
     
     @ObservedObject var networkManager = NetworkManager()
     let imageSize: CGFloat = 50
+    let placeHolderImage: Image = Image("PlaceHolderImage").resizable()
     
     var body: some View {
         NavigationView {
@@ -19,9 +20,17 @@ struct HomeView: View {
                 NavigationLink(destination: DetailView(place: place)) {
                     HStack {
                         KFImage.url(URL(string: place.thumbnail!))
+                            .placeholder{
+                                placeHolderImage
+                                    .scaledToFill()
+                                    .frame(width: imageSize, height: imageSize)
+                                    .clipped()
+                            }
                             .cancelOnDisappear(true)
                             .resizable()
+                            .scaledToFill()
                             .frame(width: imageSize, height: imageSize)
+                            .clipped()
                         VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
                             Text(place.nama!)
                                 .font(.body)
