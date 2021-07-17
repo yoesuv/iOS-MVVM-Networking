@@ -11,6 +11,7 @@ import Kingfisher
 struct DetailView: View {
     
     let place: Place?
+    let paddingText = EdgeInsets.init(top: 0, leading: 8, bottom: 0, trailing: 8)
     
     var body: some View {
         VStack (alignment: .leading) {
@@ -19,7 +20,12 @@ struct DetailView: View {
                 .resizable()
                 .frame(width: .infinity, height: 220)
             Text("\(place?.nama ?? "")")
+                .font(.body)
+                .fontWeight(.semibold)
+                .padding(paddingText)
             Text("\(place?.deskripsi ?? "")")
+                .font(.callout)
+                .padding(paddingText)
         }
         .frame(minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         .navigationBarTitle(Text("Detail Place"), displayMode: .inline)

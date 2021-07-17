@@ -24,7 +24,10 @@ struct HomeView: View {
                             .frame(width: imageSize, height: imageSize)
                         VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
                             Text(place.nama!)
+                                .font(.body)
+                                .fontWeight(.semibold)
                             Text(place.lokasi!)
+                                .font(.callout)
                         })
                     }
                 }

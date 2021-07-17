@@ -16,6 +16,8 @@ struct SplashView: View {
         NavigationView {
             VStack(alignment: .center) {
                 Text("Simple App")
+                    .font(.title)
+                    .fontWeight(.bold)
                 NavigationLink(
                     destination: home,
                     isActive: $isActive,
@@ -31,7 +33,6 @@ struct SplashView: View {
     
     func goToHome() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            print("Go to home after 2 seconds")
             self.isActive = true
         })
     }
