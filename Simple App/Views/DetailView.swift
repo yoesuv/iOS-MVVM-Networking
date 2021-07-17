@@ -21,6 +21,7 @@ struct DetailView: View {
             Text("\(place?.nama ?? "")")
             Text("\(place?.deskripsi ?? "")")
         }
+        .frame(minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
         .navigationBarTitle(Text("Detail Place"), displayMode: .inline)
     }
 }
