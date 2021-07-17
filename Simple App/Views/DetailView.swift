@@ -6,14 +6,22 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct DetailView: View {
     
     let place: Place?
     
     var body: some View {
-        Text("Detail View")
-            .navigationBarTitle(Text("Detail Place"), displayMode: .inline)
+        VStack (alignment: .leading) {
+            KFImage.url(URL(string: place?.gambar ?? ""))
+                .cancelOnDisappear(true)
+                .resizable()
+                .frame(width: .infinity, height: 220)
+            Text("\(place?.nama ?? "")")
+            Text("\(place?.deskripsi ?? "")")
+        }
+        .navigationBarTitle(Text("Detail Place"), displayMode: .inline)
     }
 }
 
