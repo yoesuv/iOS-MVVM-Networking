@@ -11,36 +11,41 @@ import Kingfisher
 struct HomeView: View {
     
     @ObservedObject var networkManager = NetworkManager()
-    let imageSize: CGFloat = 50
+    let imageSize: CGFloat = 55
     let placeHolderImage: Image = Image("PlaceHolderImage").resizable()
     
     var body: some View {
         NavigationView {
-            List(networkManager.places) { place in
-                HStack {
-                    KFImage.url(URL(string: place.thumbnail!))
-                        .placeholder{
-                            placeHolderImage
+            List {
+                ForEach(networkManager.places) { place in
+                    ZStack {
+                        HStack {
+                            KFImage.url(URL(string: place.thumbnail!))
+                                .placeholder{
+                                    placeHolderImage
+                                        .scaledToFill()
+                                        .frame(width: imageSize, height: imageSize)
+                                        .clipped()
+                                }
+                                .cancelOnDisappear(true)
+                                .resizable()
                                 .scaledToFill()
                                 .frame(width: imageSize, height: imageSize)
                                 .clipped()
+                            VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+                                Text(place.nama!)
+                                    .font(.body)
+                                    .fontWeight(.semibold)
+                                Text(place.lokasi!)
+                                    .font(.callout)
+                            })
                         }
-                        .cancelOnDisappear(true)
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: imageSize, height: imageSize)
-                        .clipped()
-                    VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-                        Text(place.nama!)
-                            .font(.body)
-                            .fontWeight(.semibold)
-                        Text(place.lokasi!)
-                            .font(.callout)
-                    })
+                        NavigationLink(destination: DetailView(place: place)) {
+                            EmptyView()
+                        }.frame(width: 0).opacity(0)
+                    }
+                    .listRowInsets(EdgeInsets())
                 }
-                NavigationLink(destination: DetailView(place: place)) {
-                    EmptyView()
-                }.frame(width: 0).opacity(0)
             }
             .navigationBarTitle(Text("List Place"), displayMode: .inline)
         }
