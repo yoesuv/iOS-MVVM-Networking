@@ -16,29 +16,31 @@ struct DetailView: View {
     let placeHolderImage: Image = Image("PlaceHolderImage").resizable()
     
     var body: some View {
-        VStack (alignment: .leading) {
-            KFImage.url(URL(string: place?.gambar ?? ""))
-                .placeholder{
-                    placeHolderImage
-                        .scaledToFill()
-                        .frame(width: .infinity, height: imageHeight)
-                        .clipped()
-                }
-                .cancelOnDisappear(true)
-                .resizable()
-                .scaledToFill()
-                .frame(width: .infinity, height: imageHeight)
-                .clipped()
-            Text("\(place?.nama ?? "")")
-                .font(.body)
-                .fontWeight(.semibold)
-                .padding(paddingText)
-            Text("\(place?.deskripsi ?? "")")
-                .font(.callout)
-                .padding(paddingText)
+        GeometryReader { geo in
+            VStack (alignment: .leading) {
+                KFImage.url(URL(string: place?.gambar ?? ""))
+                    .placeholder{
+                        placeHolderImage
+                            .scaledToFill()
+                            .frame(width: geo.size.width, height: imageHeight)
+                            .clipped()
+                    }
+                    .cancelOnDisappear(true)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: geo.size.width, height: imageHeight)
+                    .clipped()
+                Text("\(place?.nama ?? "")")
+                    .font(.body)
+                    .fontWeight(.semibold)
+                    .padding(paddingText)
+                Text("\(place?.deskripsi ?? "")")
+                    .font(.callout)
+                    .padding(paddingText)
+            }
+            .frame(maxHeight: geo.size.height, alignment: .topLeading)
+            .navigationBarTitle(Text("Detail Place"), displayMode: .inline)
         }
-        .frame(minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-        .navigationBarTitle(Text("Detail Place"), displayMode: .inline)
     }
 }
 
