@@ -26,6 +26,7 @@ struct DetailView: View {
                             .clipped()
                     }
                     .cancelOnDisappear(true)
+                    .fade(duration: 0.25)
                     .resizable()
                     .scaledToFill()
                     .frame(width: geo.size.width, height: imageHeight)

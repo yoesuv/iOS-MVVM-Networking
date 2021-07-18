@@ -20,7 +20,7 @@ struct HomeView: View {
                 ForEach(networkManager.places) { place in
                     ZStack {
                         HStack {
-                            KFImage.url(URL(string: place.thumbnail!))
+                            KFImage.url(URL(string: place.gambar!))
                                 .placeholder{
                                     placeHolderImage
                                         .scaledToFill()
@@ -28,6 +28,7 @@ struct HomeView: View {
                                         .clipped()
                                 }
                                 .cancelOnDisappear(true)
+                                .fade(duration: 0.25)
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: imageSize, height: imageSize)
