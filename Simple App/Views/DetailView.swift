@@ -15,6 +15,8 @@ struct DetailView: View {
     let paddingText = EdgeInsets.init(top: 0, leading: 8, bottom: 0, trailing: 8)
     let placeHolderImage: Image = Image("PlaceHolderImage").resizable()
     
+    @Environment(\.presentationMode) var presentation
+    
     var body: some View {
         GeometryReader { geo in
             VStack (alignment: .leading) {
@@ -41,6 +43,12 @@ struct DetailView: View {
             }
             .frame(maxHeight: geo.size.height, alignment: .topLeading)
             .navigationBarTitle(Text("Detail Place"), displayMode: .inline)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarItems(leading: Button(action: {
+                self.presentation.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "chevron.left")
+            }.foregroundColor(.black))
         }
     }
 }
