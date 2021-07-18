@@ -17,29 +17,30 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             List(networkManager.places) { place in
-                NavigationLink(destination: DetailView(place: place)) {
-                    HStack {
-                        KFImage.url(URL(string: place.thumbnail!))
-                            .placeholder{
-                                placeHolderImage
-                                    .scaledToFill()
-                                    .frame(width: imageSize, height: imageSize)
-                                    .clipped()
-                            }
-                            .cancelOnDisappear(true)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: imageSize, height: imageSize)
-                            .clipped()
-                        VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
-                            Text(place.nama!)
-                                .font(.body)
-                                .fontWeight(.semibold)
-                            Text(place.lokasi!)
-                                .font(.callout)
-                        })
-                    }
+                HStack {
+                    KFImage.url(URL(string: place.thumbnail!))
+                        .placeholder{
+                            placeHolderImage
+                                .scaledToFill()
+                                .frame(width: imageSize, height: imageSize)
+                                .clipped()
+                        }
+                        .cancelOnDisappear(true)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: imageSize, height: imageSize)
+                        .clipped()
+                    VStack(alignment: .leading, spacing: /*@START_MENU_TOKEN@*/nil/*@END_MENU_TOKEN@*/, content: {
+                        Text(place.nama!)
+                            .font(.body)
+                            .fontWeight(.semibold)
+                        Text(place.lokasi!)
+                            .font(.callout)
+                    })
                 }
+                NavigationLink(destination: DetailView(place: place)) {
+                    EmptyView()
+                }.frame(width: 0).opacity(0)
             }
             .navigationBarTitle(Text("List Place"), displayMode: .inline)
         }
