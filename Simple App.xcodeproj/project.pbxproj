@@ -18,7 +18,6 @@
 		ABA6724A269E5090006CDB81 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA67249269E5090006CDB81 /* DetailView.swift */; };
 		ABBDD77526B7502200C32580 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBDD77426B7502200C32580 /* NetworkService.swift */; };
 		ABDCBC982697A431006A1CDA /* PlaceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCBC972697A431006A1CDA /* PlaceData.swift */; };
-		ABDCBC9B2697A575006A1CDA /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDCBC9A2697A575006A1CDA /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,7 +33,6 @@
 		ABA67249269E5090006CDB81 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		ABBDD77426B7502200C32580 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		ABDCBC972697A431006A1CDA /* PlaceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceData.swift; sourceTree = "<group>"; };
-		ABDCBC9A2697A575006A1CDA /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C293204D815276A4962B3851 /* Pods-Simple App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple App.debug.xcconfig"; path = "Target Support Files/Pods-Simple App/Pods-Simple App.debug.xcconfig"; sourceTree = "<group>"; };
 		E7CA76212066C3DD912AB0A3 /* Pods_Simple_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Simple_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE5175883140714169E03263 /* Pods-Simple App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Simple App.release.xcconfig"; path = "Target Support Files/Pods-Simple App/Pods-Simple App.release.xcconfig"; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 			children = (
 				AB1AAD4E26B8B43400445DA1 /* ViewModels */,
 				ABBDD77326B7500A00C32580 /* Services */,
-				ABDCBC992697A55B006A1CDA /* Networks */,
 				ABDCBC962697A3A4006A1CDA /* Models */,
 				AB512C642694616D0056954C /* Views */,
 				AB512C53269457B10056954C /* Simple_AppApp.swift */,
@@ -135,14 +132,6 @@
 				ABDCBC972697A431006A1CDA /* PlaceData.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		ABDCBC992697A55B006A1CDA /* Networks */ = {
-			isa = PBXGroup;
-			children = (
-				ABDCBC9A2697A575006A1CDA /* NetworkManager.swift */,
-			);
-			path = Networks;
 			sourceTree = "<group>";
 		};
 		E8AA436670F7C20E644A9280 /* Pods */ = {
@@ -273,7 +262,6 @@
 				ABBDD77526B7502200C32580 /* NetworkService.swift in Sources */,
 				ABDCBC982697A431006A1CDA /* PlaceData.swift in Sources */,
 				AB630A0426A3BC99009DFE8D /* ItemPlaceView.swift in Sources */,
-				ABDCBC9B2697A575006A1CDA /* NetworkManager.swift in Sources */,
 				AB512C56269457B10056954C /* SplashView.swift in Sources */,
 				AB512C54269457B10056954C /* Simple_AppApp.swift in Sources */,
 			);
