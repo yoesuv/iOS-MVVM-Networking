@@ -1,6 +1,7 @@
 ## Simple Networking App ##
 
-Build with Swift UI, Observer Pattern
+Build with Swift UI,  
+MVVM Observer Pattern
 
 #### Screenshot ####
 | ![](https://i.imgur.com/6Athvlp.png) | ![](https://i.imgur.com/ltyTwCd.png) | ![](https://i.imgur.com/Cz0GKEI.png) |
