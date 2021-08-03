@@ -9,12 +9,12 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject var networkManager = NetworkManager()
+    @ObservedObject var viewModel = HomeViewModel()
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(networkManager.places) { place in
+                ForEach(viewModel.places) { place in
                     ZStack {
                         ItemPlaceView(place: place)
                         NavigationLink(destination: DetailView(place: place)) {
@@ -28,7 +28,7 @@ struct HomeView: View {
         }
         .navigationBarHidden(true)
         .onAppear(perform: {
-            networkManager.fetchPlaces()
+            viewModel.fetchPlaces()
         })
             
     }
