@@ -24,6 +24,7 @@ struct HomeView: View {
                     .listRowInsets(EdgeInsets())
                 }
             }
+            .listStyle(.plain)
             .navigationBarTitle(Text("List Place"), displayMode: .inline)
         }
         .navigationBarHidden(true)
