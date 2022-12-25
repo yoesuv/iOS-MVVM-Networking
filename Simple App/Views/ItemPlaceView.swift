@@ -16,7 +16,7 @@ struct ItemPlaceView: View {
     
     var body: some View {
         HStack {
-            KFImage.url(URL(string: place?.gambar! ?? ""))
+            KFImage.url(URL(string: place?.gambar! ?? ""))	
                 .placeholder{
                     placeHolderImage
                         .scaledToFill()
