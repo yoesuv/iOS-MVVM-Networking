@@ -6,7 +6,7 @@ target 'Simple App' do
   use_frameworks!
 
   # Pods for Simple App
-  pod 'Alamofire', '~> 5.7.1'
-  pod 'Kingfisher', '~> 7.8.1'
+  pod 'Alamofire', '~> 5.10.2'
+  pod 'Kingfisher', '~> 8.3.2'
 
 end
