@@ -9,39 +9,34 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject private var appNavStore: AppNavigationStore
     @ObservedObject var viewModel = HomeViewModel()
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                if !viewModel.isLoading {
-                    List {
-                        ForEach(viewModel.places) { place in
-                            ZStack {
-                                ItemPlaceView(place: place)
-                                NavigationLink(destination: DetailView(place: place)) {
-                                    EmptyView()
-                                }.frame(width: 0).opacity(0)
+        ZStack {
+            if !viewModel.isLoading {
+                List {
+                    ForEach(viewModel.places) { place in
+                        ItemPlaceView(place: place)
+                            .onTapGesture {
+                                appNavStore.path.append(AppRoute.detail(place: place))
                             }
-                            .listRowInsets(EdgeInsets())
-                        }
+                        .listRowInsets(EdgeInsets())
                     }
-                    .listStyle(.plain)
                 }
-                // show progress
-                if viewModel.isLoading {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                        .scaleEffect(2)
-                }
+                .listStyle(.plain)
             }
-            .navigationBarTitle(Text("List Place"), displayMode: .inline)
+            // show progress
+            if viewModel.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                    .scaleEffect(2)
+            }
         }
-        .navigationBarHidden(true)
-        .onAppear(perform: {
+        .navigationBarTitle(Text("List Place"), displayMode: .inline)
+        .onAppear {
             viewModel.fetchPlaces()
-        })
-            
+        }
     }
 }
 

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Place: Codable, Identifiable {
+struct Place: Codable, Identifiable, Hashable {
     var id: String {
         return nama!
     }

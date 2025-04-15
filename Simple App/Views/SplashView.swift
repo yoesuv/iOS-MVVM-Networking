@@ -9,23 +9,20 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @State private var isActive = false
-    let home = HomeView()
+    @EnvironmentObject private var appNavStore: AppNavigationStore
     
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $appNavStore.path) {
             VStack(alignment: .center) {
                 Text("Simple App")
                     .font(.title)
                     .fontWeight(.bold)
-                NavigationLink(
-                    destination: home,
-                    isActive: $isActive,
-                    label: {
-                        EmptyView()
-                    })
             }
+            .navigationDestination(for: AppRoute.self, destination: { dest in
+                dest.view
+            })
         }
+        
         .onAppear(perform: {
             goToHome()
         })
@@ -33,7 +30,7 @@ struct SplashView: View {
     
     func goToHome() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            self.isActive = true
+            appNavStore.path.append(AppRoute.home)
         })
     }
     

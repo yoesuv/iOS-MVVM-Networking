@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct Simple_AppApp: App {
+    @StateObject private var appNavStore = AppNavigationStore()
     var body: some Scene {
         WindowGroup {
             SplashView()
+                .environmentObject(appNavStore)
         }
     }
 }
