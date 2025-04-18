@@ -11,8 +11,10 @@ import Kingfisher
 struct ItemPlaceView: View {
     
     let place: Place?
+    var onItemSelected: (() -> Void)? = nil
     let imageSize: CGFloat = 55
     let placeHolderImage: Image = Image("PlaceHolderImage").resizable()
+    @State private var isTapped = false
     
     var body: some View {
         HStack {
@@ -36,6 +38,14 @@ struct ItemPlaceView: View {
                 Text(place?.lokasi! ?? "")
                     .font(.callout)
             })
+            Spacer()
+        }
+        .background(isTapped ? .gray.opacity(0.1) : .white)
+        .onTapGesture {
+            self.isTapped.toggle()
+            if let onItemSelected = self.onItemSelected {
+                onItemSelected()
+            }
         }
     }
     

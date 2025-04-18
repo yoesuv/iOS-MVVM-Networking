@@ -18,11 +18,10 @@ struct HomeView: View {
                 if !viewModel.isLoading {
                     List {
                         ForEach(viewModel.places) { place in
-                            ItemPlaceView(place: place)
-                                .onTapGesture {
-                                    appNavStore.path.append(AppRoute.detail(place: place))
-                                }
-                                .listRowInsets(EdgeInsets())
+                            ItemPlaceView(place: place, onItemSelected: {
+                                appNavStore.path.append(AppRoute.detail(place: place))
+                            })
+                            .listRowInsets(EdgeInsets())
                         }
                     }
                     .listStyle(.plain)
