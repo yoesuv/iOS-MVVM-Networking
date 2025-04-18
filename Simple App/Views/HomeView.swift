@@ -13,29 +13,34 @@ struct HomeView: View {
     @ObservedObject var viewModel = HomeViewModel()
     
     var body: some View {
-        ZStack {
-            if !viewModel.isLoading {
-                List {
-                    ForEach(viewModel.places) { place in
-                        ItemPlaceView(place: place)
-                            .onTapGesture {
-                                appNavStore.path.append(AppRoute.detail(place: place))
-                            }
-                        .listRowInsets(EdgeInsets())
+        NavigationStack(path: $appNavStore.path) {
+            ZStack {
+                if !viewModel.isLoading {
+                    List {
+                        ForEach(viewModel.places) { place in
+                            ItemPlaceView(place: place)
+                                .onTapGesture {
+                                    appNavStore.path.append(AppRoute.detail(place: place))
+                                }
+                                .listRowInsets(EdgeInsets())
+                        }
                     }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
+                // show progress
+                if viewModel.isLoading {
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
+                        .scaleEffect(2)
+                }
             }
-            // show progress
-            if viewModel.isLoading {
-                ProgressView()
-                    .progressViewStyle(CircularProgressViewStyle(tint: .blue))
-                    .scaleEffect(2)
+            .navigationBarTitle(Text("List Place"), displayMode: .inline)
+            .navigationDestination(for: AppRoute.self, destination: { dest in
+                dest.view
+            })
+            .onAppear {
+                viewModel.fetchPlaces()
             }
-        }
-        .navigationBarTitle(Text("List Place"), displayMode: .inline)
-        .onAppear {
-            viewModel.fetchPlaces()
         }
     }
 }

@@ -9,20 +9,14 @@ import SwiftUI
 
 struct SplashView: View {
     
-    @EnvironmentObject private var appNavStore: AppNavigationStore
+    @EnvironmentObject private var appNavState: AppNavigationState
     
     var body: some View {
-        NavigationStack(path: $appNavStore.path) {
-            VStack(alignment: .center) {
-                Text("Simple App")
-                    .font(.title)
-                    .fontWeight(.bold)
-            }
-            .navigationDestination(for: AppRoute.self, destination: { dest in
-                dest.view
-            })
+        VStack(alignment: .center) {
+            Text("Simple App")
+                .font(.title)
+                .fontWeight(.bold)
         }
-        
         .onAppear(perform: {
             goToHome()
         })
@@ -30,7 +24,9 @@ struct SplashView: View {
     
     func goToHome() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-            appNavStore.path.append(AppRoute.home)
+            withAnimation {
+                appNavState.navigateToHome()
+            }
         })
     }
     

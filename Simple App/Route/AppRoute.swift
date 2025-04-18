@@ -8,15 +8,13 @@
 import SwiftUI
 
 enum AppRoute: Hashable {
-    case splash
+    
     case home
     case detail(place: Place)
     
     @ViewBuilder
     var view: some View {
         switch self {
-        case .splash:
-            SplashView()
         case .home:
             HomeView()
         case .detail(let place):
