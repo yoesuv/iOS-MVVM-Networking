@@ -9,20 +9,18 @@ import SwiftUI
 
 struct HomeView: View {
     
+    @EnvironmentObject private var appNavStore: AppNavigationStore
     @ObservedObject var viewModel = HomeViewModel()
     
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $appNavStore.path) {
             ZStack {
                 if !viewModel.isLoading {
                     List {
                         ForEach(viewModel.places) { place in
-                            ZStack {
-                                ItemPlaceView(place: place)
-                                NavigationLink(destination: DetailView(place: place)) {
-                                    EmptyView()
-                                }.frame(width: 0).opacity(0)
-                            }
+                            ItemPlaceView(place: place, onItemSelected: {
+                                appNavStore.path.append(AppRoute.detail(place: place))
+                            })
                             .listRowInsets(EdgeInsets())
                         }
                     }
@@ -36,12 +34,13 @@ struct HomeView: View {
                 }
             }
             .navigationBarTitle(Text("List Place"), displayMode: .inline)
+            .navigationDestination(for: AppRoute.self, destination: { dest in
+                dest.view
+            })
+            .onAppear {
+                viewModel.fetchPlaces()
+            }
         }
-        .navigationBarHidden(true)
-        .onAppear(perform: {
-            viewModel.fetchPlaces()
-        })
-            
     }
 }
 

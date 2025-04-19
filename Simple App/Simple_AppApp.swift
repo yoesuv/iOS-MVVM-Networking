@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct Simple_AppApp: App {
+    
+    @StateObject private var appNavState = AppNavigationState()
+    @StateObject private var appNavStore = AppNavigationStore()
+    
     var body: some Scene {
         WindowGroup {
-            SplashView()
+            MyAppView()
+                .environmentObject(appNavState)
+                .environmentObject(appNavStore)
         }
     }
 }
