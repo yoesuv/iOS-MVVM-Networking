@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct MyAppView: View {
-    @EnvironmentObject private var appNavState: AppNavigationState
+    @EnvironmentObject private var appNavStore: AppNavigationStore
     
     var body: some View {
         Group {
-            switch appNavState.currentScreen {
-            case .splash:
+            if appNavStore.isSplashFinished {
+                NavigationStack(path: $appNavStore.path) {
+                    AppRoute.home.view
+                        .navigationDestination(for: AppRoute.self) { route in
+                            route.view
+                        }
+                }
+            } else {
                 SplashView()
-                
-            case .home:
-                HomeView()
             }
         }
     }
-    
 }

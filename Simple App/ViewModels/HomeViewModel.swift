@@ -15,6 +15,7 @@ class HomeViewModel: ObservableObject {
     private let networkService = NetworkService()
     
     func fetchPlaces() {
+        guard isLoading || places.isEmpty else { return }
         isLoading = true
         networkService.fetchPlaces { response in
             self.isLoading = false
