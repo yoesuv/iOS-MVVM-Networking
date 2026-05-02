@@ -10,18 +10,18 @@ import Kingfisher
 
 struct DetailView: View {
     
-    let place: Place?
+    let place: Place
     let imageHeight: CGFloat = 220
-    let paddingText = EdgeInsets.init(top: 0, leading: 8, bottom: 0, trailing: 8)
+    let paddingText = EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
     let placeHolderImage: Image = Image("PlaceHolderImage").resizable()
     
-    @Environment(\.presentationMode) var presentation
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         GeometryReader { geo in
-            VStack (alignment: .leading) {
-                KFImage.url(URL(string: place?.gambar ?? ""))
-                    .placeholder{
+            VStack(alignment: .leading) {
+                KFImage.url(URL(string: place.gambar ?? ""))
+                    .placeholder {
                         placeHolderImage
                             .scaledToFill()
                             .frame(width: geo.size.width, height: imageHeight)
@@ -33,28 +33,33 @@ struct DetailView: View {
                     .scaledToFill()
                     .frame(width: geo.size.width, height: imageHeight)
                     .clipped()
-                Text("\(place?.nama ?? "")")
+                Text(place.nama ?? "")
                     .font(.body)
                     .fontWeight(.semibold)
                     .padding(paddingText)
-                Text("\(place?.deskripsi ?? "")")
+                Text(place.deskripsi ?? "")
                     .font(.callout)
                     .padding(paddingText)
             }
             .frame(maxHeight: geo.size.height, alignment: .topLeading)
             .navigationBarTitle(Text("Detail Place"), displayMode: .inline)
             .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: Button(action: {
-                self.presentation.wrappedValue.dismiss()
-            }) {
-                Image(systemName: "chevron.left")
-            }.foregroundColor(.black))
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                    }
+                }
+            }
         }
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(place: nil)
+        DetailView(place: Place(nama: "Sample", lokasi: nil, deskripsi: nil, thumbnail: nil, gambar: nil))
     }
 }
